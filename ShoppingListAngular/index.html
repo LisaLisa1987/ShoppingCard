@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Einkaufsliste | Angular.js</title>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="css/bootstrapAmelia.css"> 
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<h1>Deine Einkaufsliste:</h1>
+<div ng-app="shopper" id="wrapper">
+
+    <div ng-controller="ShoppingCartCtrl">
+        
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr class="storeColor">
+                    <td><img src="img/shopping.png"></td>
+                    <td>Name</td>
+                    <td>Menge</td>
+                    <td>Preis</td>
+                    <td>Gesamt</td>
+                    <td>Geschäft</td> 
+                    <td></td>
+                </tr>
+            </thead>
+            
+            <tbody >
+                <tr ng-repeat="item in items | orderBy:'Store'">
+                    <td><input class="toggle" type="checkbox" ng-model="item.Completed"></td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Quantity}} Stk.</td>
+                    <td>{{item.Price || 0 | number:2}} €</td>                
+                    <td>{{item.Quantity*item.Price|| 0 | number:2}} €</td>
+                    <td>{{item.Store}}</td> 
+                    <td><a><img src="img/delete.png" ng-click="removeItem(item)"></a></td>
+                </tr>
+            
+                <tr class="userInputs">
+                    <td><input type="checkbox" ng-model="item.Completed" ng-click="markAllAsDone(item.Completed)"></td>
+                    <td><input type="text" ng-model="item.Name" style="width: 150px"/></td>
+                    <td><input type="text" ng-model="item.Quantity" /></td>
+                    <td><input type="text" ng-model="item.Price" /></td>                
+                    
+                    <!-- expression with default value -->
+                    <td>{{item.Quantity*item.Price || 0 | number:2}} €</td>
+                    <td><input type="text" ng-model="item.Store" /></td> 
+                    <td colspan="2"><a><img src="img/plus.png" ng-click="addItem(item)"></a></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="footer">
+            <div class="centered"><img src="img/price.png">Deine Einkaufskosten betragen voraussichtlich: {{totalPrice()|| 0 | number:2}} €</div>
+
+            <div class="centered"><img src="img/price.png">Deine Einkaufskosten aller markierten Gegenstände: <b>{{totalPriceMarked()|| 0 | number:2}} </b>€</div>
+        </div>
+
+        <div id="footerChecked">
+            <div class="centered">Items in der Liste: <b>{{Alltogether}}</b> | im Einkaufswagen: <b>{{Finished}}</b> | es fehlen noch: <b>{{Remaining}}</b>
+            <button type="button" ng-click="clearDoneItems()" class="btn_delete">Fertige Items löschen</button></div>
+        </div>
+        
+    </div>
+</div>
+    
+<div class="impressum">
+    &copy; Lisa Maria Lederer | FH-Salzburg MMT <br/>
+    Based on http://todomvc.com and http://sravi-kiran.blogspot.co.at/2013/02/EasyTwoWayDataBindingInHtmlPagesWithAngularJS.html
+</div>
+
+
+<script src="js/libs/angular/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="js/Controllers/ShoppingCartCtrl.js"></script>
+<script src="services/itemStorage.js"></script>
+
+
+</body>
+</html>
