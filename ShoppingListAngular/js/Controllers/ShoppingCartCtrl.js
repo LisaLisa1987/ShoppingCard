@@ -1,19 +1,17 @@
 //Im Controller werden Daten via itemStorage geladen und bearbeitet; Event handlers werden definiert 
-
-
 shopper.controller( 'ShoppingCartCtrl' ,function ShoppingCartCtrl($scope, itemStorage, filterFilter, $filter)  {
     var items = $scope.items = itemStorage.get();
 
     $scope.$watch('items', function() {
-        $scope.Remaining = filterFilter(items, {Completed: false}).length;
-        $scope.Finished = items.length - $scope.Remaining;
-        $scope.allChecked = !$scope.Remaining;
-        $scope.Alltogether = $scope.items.length;
+        $scope.remaining = filterFilter(items, {completed: false}).length;
+        $scope.finished = items.length - $scope.remaining;
+        $scope.allChecked = !$scope.remaining;
+        $scope.alltogether = $scope.items.length;
         itemStorage.put(items);
     }, true);
 
     $scope.addItem = function(item) {
-        $scope.item.Completed = false;
+        $scope.item.completed = false;
         $scope.items.push(item);
         $scope.item = {};
     }
@@ -21,7 +19,7 @@ shopper.controller( 'ShoppingCartCtrl' ,function ShoppingCartCtrl($scope, itemSt
     $scope.totalPrice = function(){
         var total = 0;
         for(count=0; count<$scope.items.length; count++){
-            total += $scope.items[count].Price*$scope.items[count].Quantity;
+            total += $scope.items[count].price*$scope.items[count].quantity;
         }
         return total;
     }
@@ -29,14 +27,14 @@ shopper.controller( 'ShoppingCartCtrl' ,function ShoppingCartCtrl($scope, itemSt
     $scope.totalPriceMarked = function(){
         var total = 0;
         for(count=0; count<$scope.items.length; count++){
-            if($scope.items[count].Completed == true)
-            total += $scope.items[count].Price*$scope.items[count].Quantity;
+            if($scope.items[count].completed == true)
+            total += $scope.items[count].price*$scope.items[count].quantity;
         }
         return total;
     }
 
     $scope.totalPriceItem = function(){
-        var total = $scope.items[1].Price * $scope.items[1].Quantity;
+        var total = $scope.items[1].price * $scope.items[1].quantity;
         return total;
     }
 
@@ -50,23 +48,23 @@ shopper.controller( 'ShoppingCartCtrl' ,function ShoppingCartCtrl($scope, itemSt
 
     $scope.clearDoneItems = function() {
         $scope.items = items = items.filter(function(val) {
-            return !val.Completed;
+            return !val.completed;
         });
     };
 
     $scope.countRemainings = function() {
         var remaining = 0;
         for(count=0; count<$scope.items.length; count++){
-            if($scope.items[count].Completed == false){
+            if($scope.items[count].completed == false){
                 remaining++;
             }
         }
         return remaining;
     }
 
-    $scope.markAllAsDone = function(done) {
+    $scope.markAllAsDone = function(completed) {
     items.forEach(function(item) {
-        item.Completed = done;
+        item.completed = completed;
         });
     };
 });

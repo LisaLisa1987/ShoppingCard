@@ -1,6 +1,4 @@
 'use strict';
-
-
 //Hier werden Daten lokal gespeichert und können abgerufen werden
  
 shopper.factory( 'itemStorage', function() {

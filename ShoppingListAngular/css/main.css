@@ -20,8 +20,14 @@ h1 {
 	    box-shadow: none;
 }
 
-td input[type="checkbox"] {
+input[type="checkbox"] {
 	margin-left: 10px;
+	margin-top: -3px;
+}
+
+.markAll input[type="checkbox"] {
+	margin-right: 25px !important;
+	margin-left: 0px;
 }
 
 tbody > tr > td:nth-child(6) {
@@ -45,12 +51,12 @@ tbody > tr > td:nth-child(6) {
 }
 
 #footer {
-	width:90%;
+	width:100%;
 	background-color: #f4f4ed;
-	height: auto;
+	height: 70px;
 	padding: 0px;
 	margin: 0px auto;
-	padding: 10px 0px 10px 60px;
+	padding: 10px 0px 10px 0px;
 	z-index: -9;
 }
 
@@ -99,3 +105,23 @@ thead {
 	margin: 20px 0px 30px 0px;
 }
 
+.markAll {
+	float: left;
+	width: 100%;
+	margin-left: 20px;
+	padding: 5px 0px 10px 0px;
+}
+
+.markAll input[type="checkbox"] {
+	margin-right: 22px;
+	margin-left: -2px;
+}
+
+.priceInfo {
+	margin-left: 12px;
+}
+
+.priceInfo img {
+	padding-right: 15px;
+
+}

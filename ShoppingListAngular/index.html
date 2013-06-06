@@ -29,39 +29,44 @@
             </thead>
             
             <tbody >
-                <tr ng-repeat="item in items | orderBy:'Store'">
-                    <td><input class="toggle" type="checkbox" ng-model="item.Completed"></td>
-                    <td>{{item.Name}}</td>
-                    <td>{{item.Quantity}} Stk.</td>
-                    <td>{{item.Price || 0 | number:2}} €</td>                
-                    <td>{{item.Quantity*item.Price|| 0 | number:2}} €</td>
-                    <td>{{item.Store}}</td> 
+                <tr ng-repeat="item in items | orderBy:'store'">
+                    <td><input class="toggle" type="checkbox" ng-model="item.completed"></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.quantity}} Stk.</td>
+                    <td>{{item.price || 0 | number:2}} €</td>                
+                    <td>{{item.quantity*item.price|| 0 | number:2}} €</td>
+                    <td>{{item.store}}</td> 
                     <td><a><img src="img/delete.png" ng-click="removeItem(item)"></a></td>
                 </tr>
             
                 <tr class="userInputs">
-                    <td><input type="checkbox" ng-model="item.Completed" ng-click="markAllAsDone(item.Completed)"></td>
-                    <td><input type="text" ng-model="item.Name" style="width: 150px"/></td>
-                    <td><input type="text" ng-model="item.Quantity" /></td>
-                    <td><input type="text" ng-model="item.Price" /></td>                
+                    <td></td>
+                    <td><input type="text" ng-model="item.name" style="width: 150px"/></td>
+                    <td><input type="text" ng-model="item.quantity" /></td>
+                    <td><input type="text" ng-model="item.price" /></td>                
                     
                     <!-- expression with default value -->
-                    <td>{{item.Quantity*item.Price || 0 | number:2}} €</td>
-                    <td><input type="text" ng-model="item.Store" /></td> 
+                    <td>{{item.quantity*item.price || 0 | number:2}} €</td>
+                    <td><input type="text" ng-model="item.store" /></td> 
                     <td colspan="2"><a><img src="img/plus.png" ng-click="addItem(item)"></a></td>
 
                 </tr>
             </tbody>
         </table>
 
-        <div id="footer">
-            <div class="centered"><img src="img/price.png">Deine Einkaufskosten betragen voraussichtlich: {{totalPrice()|| 0 | number:2}} €</div>
+        <div class="markAll"><input type="checkbox" ng-model="item.completed" ng-click="markAllAsDone(item.completed)">Alle Artikel markieren</div>
 
-            <div class="centered"><img src="img/price.png">Deine Einkaufskosten aller markierten Gegenstände: <b>{{totalPriceMarked()|| 0 | number:2}} </b>€</div>
+        <div id="footer">
+            <div class="priceInfo">
+                <img src="img/price.png">Deine Einkaufskosten betragen voraussichtlich: {{totalPrice()|| 0 | number:2}} €
+            </div>
+            <div class="priceInfo">
+                <img src="img/price.png">Deine Einkaufskosten aller markierten Gegenstände: <b>{{totalPriceMarked()|| 0 | number:2}} </b>€
+            </div>
         </div>
 
         <div id="footerChecked">
-            <div class="centered">Items in der Liste: <b>{{Alltogether}}</b> | im Einkaufswagen: <b>{{Finished}}</b> | es fehlen noch: <b>{{Remaining}}</b>
+            <div class="centered">Items in der Liste: <b>{{alltogether}}</b> | im Einkaufswagen: <b>{{finished}}</b> | es fehlen noch: <b>{{remaining}}</b>
             <button type="button" ng-click="clearDoneItems()" class="btn_delete">Fertige Items löschen</button></div>
         </div>
         
@@ -70,7 +75,6 @@
     
 <div class="impressum">
     &copy; Lisa Maria Lederer | FH-Salzburg MMT <br/>
-    Based on http://todomvc.com and http://sravi-kiran.blogspot.co.at/2013/02/EasyTwoWayDataBindingInHtmlPagesWithAngularJS.html
 </div>
 
 
