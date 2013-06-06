@@ -29,7 +29,7 @@
 
             <tfoot>
 	            <tr class="userInputs" >
-	                <td><input id="toggle-all" type="checkbox"></td>
+	                <td></td>
 	                <td><input type="text" id="newItem" autofocus style="width: 150px"/></td>
 	                <td><input type="text" id="newQuantity"/>Stk.</td>
 	                <td><input type="text" id="newPrice" /> €</td>                
@@ -38,8 +38,10 @@
 	                <td colspan="2"><a ><img src="img/plus.png" id="addItem"></a></td>
 
 	            </tr>
+	            
             </tfoot>
         </table>
+        <div class="markAll"><input id="toggle-all" type="checkbox">Alle Artikel markieren</div>
 		<footer id="footer"></footer>
 	</div>
 
@@ -63,9 +65,9 @@
 
 	<script type="text/template" id="stats-template">
     <div id="footer">
-        <div class="centered"><a><img src="img/price.png" id="sumAll"></a>Deine Einkaufskosten betragen voraussichtlich: 
+        <div class="priceInfo"><img src="img/price.png" id="sumAll">Deine Einkaufskosten betragen voraussichtlich: 
         <%- this.priceAlltogether() %> €</div>
-        <div class="centered"><img src="img/price.png">Deine Einkaufskosten aller markierten Gegenstände: <b><%- this.priceAllMarked() %></b> €</div>
+        <div class="priceInfo"><img src="img/price.png">Deine Einkaufskosten aller markierten Gegenstände: <b><%- this.priceAllMarked() %></b> €</div>
     </div>
 
     <div id="footerChecked">

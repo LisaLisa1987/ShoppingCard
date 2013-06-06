@@ -2,7 +2,6 @@ var app = app || {};
 
 $(function( $ ) {
 	'use strict';
-
 	app.AppView = Backbone.View.extend({
 
 		//Die View wird an das Element #wrapper gebunden
@@ -60,7 +59,6 @@ $(function( $ ) {
 				this.$main.hide();
 				this.$footer.hide();
 			}
-
 			this.allCheckbox.checked = !remaining;
 		},
 
@@ -115,7 +113,6 @@ $(function( $ ) {
 			app.Items.each(function(items){
 				erg += items.get('price') * items.get('quantity');
 			});
-
 			return erg;
 		},
 

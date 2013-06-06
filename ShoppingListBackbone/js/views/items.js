@@ -4,7 +4,6 @@ $(function() {
 	'use strict';
 
 	//ShoppingCard Item View
-
 	app.ShoppingCardView = Backbone.View.extend({
 
 		//Das DOM-Element für ein neues Item = tr
@@ -32,7 +31,6 @@ $(function() {
 		render: function() {
 			this.$el.html( this.template( this.model.toJSON() ) );
 			this.$el.toggleClass( 'completed', this.model.get('completed') );
-
 			this.toggleVisible();
 			return this;
 		},
@@ -56,11 +54,6 @@ $(function() {
 		//Ein item wird gelsöcht, das Model von localStorage entfernt und die dazugehörige View gelöscht
 		clear: function() {
 			this.model.destroy();
-		},
-
-		clearAll: function() {
-			this.model.destroy();
-			this.remove();
 		}
 	});
 });

@@ -4,12 +4,10 @@ var app = app || {};
 	'use strict';
 
 	//Item Collection
-
 	var ItemList = Backbone.Collection.extend({
 
 		//Referenz zum Model der Collection
 		model: app.Item,
-
 		localStorage: new Store('items-backbone'),
 
 		//Filtern aller Items, die den Status "completed" haben

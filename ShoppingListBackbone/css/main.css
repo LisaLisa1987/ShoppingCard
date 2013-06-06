@@ -31,12 +31,13 @@ h1 {
 	    width: 50px;
 }
 
-tbody > tr {
-	backround-color: white;
+input[type="checkbox"] {
+	margin-left: 10px;
+	margin-top: -2px;
 }
 
-td input[type="checkbox"] {
-	margin-left: 10px;
+tbody > tr {
+	backround-color: white;
 }
 
 tbody > tr > td:nth-child(6) {
@@ -127,3 +128,22 @@ thead {
 	margin: 20px 0px 30px 0px;
 }
 
+.markAll {
+	float: left;
+	width: 100%;
+	margin-left: 20px;
+	padding: 5px 0px 10px 0px;
+}
+
+.markAll input[type="checkbox"] {
+	margin-right: 22px;
+	margin-left: -2px;
+}
+
+.priceInfo {
+	margin-left: 12px;
+}
+
+.priceInfo img {
+	padding-right: 15px;
+}
