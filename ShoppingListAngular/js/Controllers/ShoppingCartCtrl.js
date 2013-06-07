@@ -33,11 +33,6 @@ shopper.controller( 'ShoppingCartCtrl' ,function ShoppingCartCtrl($scope, itemSt
         return total;
     }
 
-    $scope.totalPriceItem = function(){
-        var total = $scope.items[1].price * $scope.items[1].quantity;
-        return total;
-    }
-
     $scope.removeItem = function(item){
         $scope.items.splice($scope.items.indexOf(item),1);
     }
